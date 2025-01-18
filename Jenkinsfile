@@ -57,7 +57,6 @@ pipeline {
                     }
                 }
             }
-        }
         stage('Checkout Code') {
             steps {
                 // Checkout the repository from GitHub or GitLab
