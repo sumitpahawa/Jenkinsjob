@@ -60,7 +60,7 @@ pipeline {
         stage('Checkout Code') {
             steps {
                 // Checkout the repository from GitHub or GitLab
-                git branch: 'main', url:'https://github.com/sumitpahawa/Jenkinsjob.git'
+                    git branch: 'main', url:'https://github.com/sumitpahawa/Jenkinsjob.git'
             }
         }
 
@@ -80,19 +80,30 @@ pipeline {
             }
         }
 
-        stage('Generate Reports') {
+        stage('Publish Extent Report') {
             steps {
-                // Generate and archive the test reports (Cucumber or JUnit)
-                cucumber buildStatus: 'UNSTABLE', fileIncludePattern: '**/target/cucumber-report.html'
-                junit '**/target/test-classes/*.xml' // for JUnit test results
+                // Archive the generated extent report
+                archiveArtifacts allowEmptyArchive: true, artifacts: 'test-output/Spark/Index.html', followSymlinks: false
             }
         }
     }
 
+        stage('Post Build Actions') {
+                steps {
+                    // Optional: You can use Jenkins plugins to publish the Extent Report as a report
+                    // E.g., using the HTML Publisher Plugin
+                    publishHTML([
+                        reportName: 'Extent Report',
+                        reportDir: 'test-output/Spark',
+                        reportFiles: 'Index.html'
+                    ])
+                }
+         }
+
     post {
         always {
             // Clean up actions (like stopping the Appium server)
-            sh 'pkill -f appium'
+
         }
     }
 }
