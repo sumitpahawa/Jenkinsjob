@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite" parallel="tests">
+    <parameter name="deviceName" value="Samsung"/>
+    <parameter name="platformName" value="Android"/>
+    <test name="Samsung">
+        <classes>
+            <class name="testRunner.SpeedwayFailRunner"/>
+        </classes>
+    </test>
+    <!--    <test name="ios">
+            <parameter name="deviceName" value="iphone xs max"/>
+            <parameter name="platformName" value="IOS"/>
+            <classes>
+                <class name="testRunner.vuduAppRunner"/>
+            </classes>
+        </test>
+        <test name="Fire">
+            <parameter name="deviceName" value="FireTV"/>
+            <parameter name="platformName" value="Android"/>
+            <classes>
+                <class name="testRunner.firetvAppRunner"/>
+            </classes>
+        </test>-->
+</suite> <!-- Suite -->

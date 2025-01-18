@@ -1,0 +1,16 @@
+{
+  "Samsung": {
+    "os": "11",
+    "build": "Application Version",
+    "devicename": "samsung",
+    "appium_url": "http://192.168.2.83:4723",
+    "oem": "samsung",
+    "model": "samsung",
+    "udid": "R3CN60BS3AV",
+    "phonenumber": "4256289240",
+    "platformname": "Android",
+    "automationname": "uiautomator2",
+    "appPackage": "com.mattel.hwcollector",
+    "appActivity": "com.mattel.hwcollector.MainActivity"
+  }
+}
