@@ -1,7 +1,7 @@
 pipeline{
     agent any
     tools{
-        maven 'Maven'
+        maven 'MAVEN_JENKINS'
     }
     stages{
         stage("checkout from github"){
@@ -11,10 +11,6 @@ pipeline{
                 echo 'pulled from github successfully'
             }
         }
-        stage('Checkout Code') {
-            steps {
-                // Checkout the repository from GitHub or GitLab
-                git branch: 'main', url:'https://github.com/sumitpahawa/Jenkinsjob.git'
         stage("compile the code to executable format"){
             steps{
                 sh "mvn clean install"
