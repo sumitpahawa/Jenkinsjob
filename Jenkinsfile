@@ -2,7 +2,7 @@ pipeline{
     agent any
     tools{
         maven "Maven"
-        java "jdk-1.8.jdk"
+        jdk "jdk-1.8.jdk"
     }
     stages{
         stage("checkout from github"){
