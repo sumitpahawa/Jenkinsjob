@@ -79,17 +79,6 @@ pipeline {
                 sh 'mvn test'
               }
         }
-        stage('Post Build Actions') {
-                steps {
-                    // Optional: You can use Jenkins plugins to publish the Extent Report as a report
-                    // E.g., using the HTML Publisher Plugin
-                    publishHTML([
-                        reportName: 'Extent Report',
-                        reportDir: 'test-output/Spark',
-                        reportFiles: 'Index.html'
-                    ])
-                }
-        }
     }
     post {
         always {
