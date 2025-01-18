@@ -61,7 +61,7 @@ pipeline {
         stage('Checkout Code') {
             steps {
                 // Checkout the repository from GitHub or GitLab
-                git branch: 'main', url:'https://gitlab.platform.mattel/Sumit.Pahawa/speedwaybddappium.git'
+                git branch: 'main', url:'https://github.com/sumitpahawa/Jenkinsjob.git'
             }
         }
 
