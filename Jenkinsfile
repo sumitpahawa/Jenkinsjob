@@ -86,7 +86,6 @@ pipeline {
                 archiveArtifacts allowEmptyArchive: true, artifacts: 'test-output/Spark/Index.html', followSymlinks: false
             }
         }
-    }
 
         stage('Post Build Actions') {
                 steps {
@@ -99,6 +98,7 @@ pipeline {
                     ])
                 }
          }
+    }
 
     post {
         always {
