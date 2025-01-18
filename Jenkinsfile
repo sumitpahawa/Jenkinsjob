@@ -7,6 +7,56 @@ pipeline {
     }
 
     stages {
+         stage('Install Java') {
+                steps {
+                    script {
+                        echo "Installing Java ${env.JAVA_VERSION}..."
+
+                        // Update package index
+                        sh 'sudo apt-get update'
+
+                        // Install OpenJDK (Java)
+                        sh "sudo apt-get install -y openjdk-${env.JAVA_VERSION}-jdk"
+
+                        // Set JAVA_HOME environment variable
+                        sh 'echo "export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which javac))))" >> ~/.bashrc'
+                        sh 'echo "export PATH=$JAVA_HOME/bin:$PATH" >> ~/.bashrc'
+
+                        // Apply the changes made to .bashrc
+                        sh 'source ~/.bashrc'
+
+                        // Verify Java installation
+                        sh 'java -version'
+                    }
+                }
+            }
+
+         stage('Install Maven') {
+                steps {
+                    script {
+                        echo "Installing Maven ${env.MAVEN_VERSION}..."
+
+                        // Download Maven binary
+                        sh "wget https://apache.osuosl.org/maven/maven-3/${env.MAVEN_VERSION}/binaries/apache-maven-${env.MAVEN_VERSION}-bin.tar.gz"
+
+                        // Extract the tar file
+                        sh "tar -xvzf apache-maven-${env.MAVEN_VERSION}-bin.tar.gz"
+
+                        // Move Maven to /opt
+                        sh "sudo mv apache-maven-${env.MAVEN_VERSION} /opt/"
+
+                        // Set Maven environment variables
+                        sh 'echo "export M2_HOME=/opt/apache-maven-${env.MAVEN_VERSION}" >> ~/.bashrc'
+                        sh 'echo "export PATH=$M2_HOME/bin:$PATH" >> ~/.bashrc'
+
+                        // Apply changes made to .bashrc
+                        sh 'source ~/.bashrc'
+
+                        // Verify Maven installation
+                        sh 'mvn -version'
+                    }
+                }
+            }
         stage('Checkout Code') {
               steps {
                 // Checkout the repository from GitHub or GitLab
