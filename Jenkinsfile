@@ -13,7 +13,7 @@ pipeline{
         }
         stage("compile the code to executable format"){
             steps{
-                sh "mvn compile"
+                sh "mvn clean install"
                 echo 'converted the code from human readable to machine readable '
             }
         }
