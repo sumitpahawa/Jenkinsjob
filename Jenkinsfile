@@ -1,13 +1,13 @@
 pipeline {
     agent any
 
- environment {
+    environment {
         JAVA_VERSION = '11'  // Specify the version of Java you want to install
         MAVEN_VERSION = '3.8.9'  // Specify the version of Maven you want to install
     }
 
     stages {
-    stage('Install Java') {
+         stage('Install Java') {
                 steps {
                     script {
                         echo "Installing Java ${env.JAVA_VERSION}..."
@@ -31,7 +31,7 @@ pipeline {
                 }
             }
 
-            stage('Install Maven') {
+         stage('Install Maven') {
                 steps {
                     script {
                         echo "Installing Maven ${env.MAVEN_VERSION}..."
@@ -58,39 +58,43 @@ pipeline {
                 }
             }
         stage('Checkout Code') {
-            steps {
+              steps {
                 // Checkout the repository from GitHub or GitLab
                     git branch: 'main', url:'https://github.com/sumitpahawa/Jenkinsjob.git'
-            }
+              }
         }
 
         stage('Install Dependencies') {
-            steps {
+              steps {
                 // Install Maven dependencies
                 sh 'mvn clean install'
                 // Install Appium dependencies if needed
                 sh 'npm install -g appium'
-            }
+              }
         }
 
         stage('Run BDD Tests') {
-            steps {
+               steps {
                 // Run the Cucumber tests using Maven
                 sh 'mvn test'
-            }
+              }
         }
-
-        stage('Publish Extent Report') {
-            steps {
-                // Archive the generated extent report
-                archiveArtifacts allowEmptyArchive: true, artifacts: 'test-output/Spark/Index.html', followSymlinks: false
-            }
+        stage('Post Build Actions') {
+                steps {
+                    // Optional: You can use Jenkins plugins to publish the Extent Report as a report
+                    // E.g., using the HTML Publisher Plugin
+                    publishHTML([
+                        reportName: 'Extent Report',
+                        reportDir: 'test-output/Spark',
+                        reportFiles: 'Index.html'
+                    ])
+                }
         }
     }
-
     post {
         always {
             // Clean up actions (like stopping the Appium server)
+            archiveArtifacts allowEmptyArchive: true, artifacts: 'test-output/Spark/Index.html', followSymlinks: false
 
         }
     }
