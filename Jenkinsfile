@@ -29,6 +29,18 @@ pipeline{
         always{
             zeeReporter createPackage: false, cycleDuration: '30 days', cycleKey: 'CreateNewCycle', cyclePrefix: '', parserTemplateKey: '5', projectKey: '12', releaseKey: '25', resultXmlFilePath: 'target/surefire-reports/surefire-reports/testng-results.xml', serverAddress: 'https://mattel.yourzephyr.com'
         }
+        success {
+                  publishHTML([
+                              allowMissing: false, 
+                              alwaysLinkToLastBuild: false, 
+                              keepAll: false, 
+                              reportDir: 'Reports', 
+                              reportFiles: 'Spark.html', 
+                              reportName: 'ExtentReport', 
+                              reportTitles: '', 
+                              useWrapperFileDirectly: true])
+                }
+        
     }
 
 }
