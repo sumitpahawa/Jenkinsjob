@@ -27,7 +27,7 @@ pipeline{
     }
     post {
         always{
-            zeeReporter createPackage: false, cycleDuration: '30 days', cycleKey: 'CreateNewCycle', cyclePrefix: '', parserTemplateKey: '5', projectKey: '1', releaseKey: '1', resultXmlFilePath: 'target/surefire-reports/*.xml', serverAddress: 'https://mattel.yourzephyr.com'
+            zeeReporter createPackage: false, cycleDuration: '30 days', cycleKey: 'CreateNewCycle', cyclePrefix: '', parserTemplateKey: '5', projectKey: '12', releaseKey: '25', resultXmlFilePath: 'target/surefire-reports/surefire-reports/testng-results.xml', serverAddress: 'https://mattel.yourzephyr.com'
         }
     }
 
