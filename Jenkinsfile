@@ -27,7 +27,7 @@ pipeline{
     }
     post {
         always{
-            zeeReporter createPackage: false, cycleDuration: '10 days', cycleKey: 'CreateNewCycle', cyclePrefix: '', parserTemplateKey: '5', projectKey: '12', releaseKey: '25', resultXmlFilePath: 'target/surefire-reports/surefire-reports/testng-results.xml', serverAddress: 'https://mattel.yourzephyr.com'
+            zeeReporter createPackage: true, cycleDuration: '10 days', cycleKey: 'CreateNewCycle', cyclePrefix: 'Automation', parserTemplateKey: '5', projectKey: '12', releaseKey: '25', resultXmlFilePath: 'target/surefire-reports/surefire-reports/testng-results.xml', serverAddress: 'https://mattel.yourzephyr.com'
         }
         success {
                   publishHTML([
