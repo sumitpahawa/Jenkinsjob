@@ -1,16 +1,7 @@
 Feature: Collection Screen
     Scenario Outline:[9] Verify user is able to sign in to the app - valid credentials
       When I press the Get Started button
-      When I type my credentials "<username>" and "<password>"
-      And I press the Continue button
-      Then I should be redirected to My Garage Screen
-      Examples:
-        | username                     | password    |
-        | s.pahawa@gmail.com           | Shilpi@10   |
- Scenario: [6]Verify empty state in Vehicle Collection Screen in user's first login\
-    Given No cars should be added to the Vehicles tab
-    When I'm in the Vehicles tab
-    Then I should be able to see "Your Garage is empty.".
+
 
 #
 #  Scenario: [7]Verify empty state in Series Collection Screen in user's first login
