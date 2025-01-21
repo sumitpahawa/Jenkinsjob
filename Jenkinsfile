@@ -34,9 +34,9 @@ pipeline{
                               allowMissing: false, 
                               alwaysLinkToLastBuild: false, 
                               keepAll: false, 
-                              reportDir: 'Reports', 
-                              reportFiles: 'Spark.html', 
-                              reportName: 'ExtentReport', 
+                              reportDir: 'test-output/Spark/', 
+                              reportFiles: 'Index.html', 
+                              reportName: 'AutomationReport', 
                               reportTitles: '', 
                               useWrapperFileDirectly: true])
                 }
