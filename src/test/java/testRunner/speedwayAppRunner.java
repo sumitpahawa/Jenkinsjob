@@ -11,7 +11,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 @CucumberOptions(features = "src/test/resources/featurefiles/CollectionScreen.feature", glue = "stepdefinitions",
-        plugin = {"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:", "json:target/cucumber-reports/Cucumber.json","rerun:target/failed_scenarios.txt"},
+        plugin = {"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:", "junit:target/cucumber-reports/Cucumber.xml","json:target/cucumber-reports/Cucumber.json","rerun:target/failed_scenarios.txt"},
         monochrome = true)
 public class speedwayAppRunner extends BaseTest {
     private TestNGCucumberRunner testNGCucumberRunner;
